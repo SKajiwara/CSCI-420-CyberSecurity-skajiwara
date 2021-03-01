@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Dialog Menu Options
-options=("Add Security Rule" "Modify Security Rule" "Delete Security Rule" 
+options=("Add Security Rule" "Modify Security Rule" "Delete Security Rule"
 			"Display IP Tables" "Export IP Table to report.html" "Exit")
 add_options=("Block Every Ping (IPv4)" "Block Every Ping (IPv6)")
 mod_options=("")
@@ -40,7 +40,7 @@ modify_security_rule() {
 	echo "Mod" # DEBUG
 }
 delete_security_rule() {
-	echo "Del" # DEBUG	
+	echo "Del" # DEBUG
 	PS3="Please enter your choice [a number]: "
 	select opt in "${del_options[@]}"; do
 		printf "you chose choice $REPLY which is $opt\n"
@@ -62,6 +62,7 @@ display_ip_tables() {
 	printf "\nIPv6 Table:\n%s\n\n" "$(eval 'ip6tables -L -v -n | more')"
 }
 export_report() {
+	Title="This is your security rule summary"
 	{
 		echo "<html>"
 		echo "<head>"
@@ -69,20 +70,45 @@ export_report() {
 		echo "table{background-color:#DCDCDC}"
 		echo "thead {color:#708090}"
 		echo "tbody {color:#191970}"
+		echo "th{text-align:left;max-width:300px;min-width:150px;word-wrap:break-word;}"
+	#	echo "td { width: 100%;}"
 		echo "</style>"
 		echo "</head>"
 		echo "<body>"
-		echo "<table border=\"1\">"
-		echo "<thead>"
-		echo "<tr width="100" bgcolor='#C0C0C0'><center><td colspan="3"><font color="#000000"><b>CONSOLIDATED RUNBOOK</b></font></center></td>"
-		echo "</h4>"
+		echo "<h1>$Title</h1>"
+	} > report.html
+	{
+		echo "<table>"
+        echo "<thead>"
+        echo "<tr>"
+        echo "<th>TYPE</th>"
+        echo "<th>RULE</th>"
+        echo "</tr>"
+        echo "</thead>"
+        echo "<tbody>"
+        echo "<tr>"
+        echo "<td>INPUT</td>"
+	} >> report.html
+	{
+	    for ((i = 0 ; i < 10 ; i++)); do
+	        echo "<td>$(eval "sudo iptables -L INPUT -v -n --line-numbers | grep $i")</td>"
+    	done
 		echo "</tr>"
-		echo "<tr>"
-		echo "<th><col width="100"><font color="000000">APP NAME</font></th>"
-		echo "<th><col width="100"><font color="000000">STATUS</font></th>"
-		echo "<th><col width="100"><font color="000000">STATUS AS ON</font></th>"
-		echo "</tr>"
-	}> text.html
+        echo "<tr>"
+        echo "<td>February</td>"
+        echo "<td>$80</td>"
+        echo "</tr>"
+        echo "</tbody>"
+        echo "<tfoot>"
+        echo "<tr>"
+        echo "<td>Sum</td>"
+        echo "<td>$180</td>"
+        echo "</tr>"
+        echo "</tfoot>"
+        echo "</table>"
+        echo "</body>"
+        echo "</html>"
+
 }
 main() {
 	PS3='Please enter your choice: '; clear
