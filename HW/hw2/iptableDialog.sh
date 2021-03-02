@@ -7,46 +7,49 @@ add_options=("Block Every Ping (IPv4)" "Block Every Ping (IPv6)" "Block Custom P
 				"Block Custom Ping (IPv6)")
 mod_options=("")
 del_options=("Remove Block Every Ping (IPv4)" "Remove Block Every Ping (IPv6)")
-
 add_security_rule() {
 	echo "Add" # DEBUG
-	PS3="Please enter your choice [a number]: "
-	select opt in "${add_options[@]}"; do
-		printf "you chose choice $REPLY which is $opt\n"
-		case $opt in
-			"${add_options[0]}")
-				tempEval=$(eval "sudo iptables -L -v -n | grep -i '*       0.0.0.0/0'")
-				tempScript="sudo iptables -A INPUT -p icmp --icmp-type echo-request -j DROP"
-				tempOpt=0
-				break;;
-			"${add_options[1]}")
-				tempEval=$(eval "sudo ip6tables -L -v -n | grep -i 'DROP       icmpv6'")
-				tempScript="sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type echo-request -j DROP"
-				tempOpt=1
-				break;;
-			"${add_options[2]}")
-				echo -n "Type IP adress / range: "
-				read ipAddr
-				tempEval=$(eval "sudo iptables -L INPUT -v -n | grep -i '$ipAddr'")
-				tempScript="sudo iptables -A INPUT -s $ipAddr -p icmp --icmp-type echo-request -j DROP"
-				tempOpt=2
-				break;;
-			"${add_options[3]}")
-				break;;
-			*) printf "invalid option $REPLY\n";;
-		esac
-	done
-	echo "$tempEval AAAAA"
-	if [[ -z "$tempEval" ]];then
-    	result=$(eval "$tempScript | 'not found'")
-		if [[ -z result ]]; then
-       		printf "you successfully added ${add_options[$tempOpt]}\n"
-		else
-			printf "adding ${add_options[$tempOpt] has failed...\n"
-		fi
+    PS3="Please enter your choice [a number]: "
+    select opt in "${add_options[@]}"; do
+        printf "you chose choice $REPLY which is $opt\n"
+        case $opt in
+            "${add_options[0]}")
+                tempEval=$(eval "sudo iptables -L -v -n | grep -i '*       0.0.0.0/0'")
+                tempScript="sudo iptables -A INPUT -p icmp --icmp-type echo-request -j DROP"
+                tempOpt=0
+                break;;
+            "${add_options[1]}")
+                tempEval=$(eval "sudo ip6tables -L -v -n | grep -i 'DROP       icmpv6'")
+                tempScript="sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type echo-request -j DROP"
+                tempOpt=1
+                break;;
+            "${add_options[2]}")
+                echo -n "Type IP adress / range: "
+                read ipAddr
+                tempEval=$(eval "sudo iptables -L INPUT -v -n | grep -i '$ipAddr'")
+                tempScript="sudo iptables -L"
+                tempOpt=2
+                break;;
+            "${add_options[3]}")
+                echo -n "Type IP address / range: "
+                read ipAddr
+                tempEval=$(eval "sudo ip6tables -L INPUT -v -n | grep -i '$ipAddr'")
+                tempScript="sudo iptables -L"
+                tempOpt=3
+                break;;
+            *) printf "invalid option $REPLY\n";;
+        esac
+    done
+    echo "$tempEval AAAAA"
+    if [[ -z "$tempEval" ]]
+		then
+        result=$(eval "$tempScript | grep -i 'not found'")
+
     else
         printf "you already have ${add_options[$tempOpt]}\n"
     fi
+
+
 }
 modify_security_rule() {
 	echo "Mod" # DEBUG
@@ -75,22 +78,23 @@ display_ip_tables() {
 }
 export_report() {
 	Title="This is your security rule summary"
-	{
-		echo "<html>"
-		echo "<head>"
-		echo "<style type=\"text/css\">"
-		echo "table{background-color:#DCDCDC}"
-		echo "thead {color:#708090}"
-		echo "tbody {color:#191970}"
-		echo "th{text-align:left;max-width:300px;min-width:150px;word-wrap:break-word;}"
-	#	echo "td { width: 100%;}"
-		echo "</style>"
-		echo "</head>"
-		echo "<body>"
-		echo "<h1>$Title</h1>"
-	} > report.html
-	{
-		echo "<table>"
+	    Title="This is your security rule summary"
+    {
+        echo "<html>"
+        echo "<head>"
+        echo "<style type=\"text/css\">"
+        echo "table{background-color:#DCDCDC}"
+        echo "thead {color:#708090}"
+        echo "tbody {color:#191970}"
+        echo "th{text-align:left;max-width:300px;min-width:150px;word-wrap:break-word;}"
+    #   echo "td { width: 100%;}"
+        echo "</style>"
+        echo "</head>"
+        echo "<body>"
+        echo "<h1>$Title</h1>"
+    } > report.html
+    {
+        echo "<table>"
         echo "<thead>"
         echo "<tr>"
         echo "<th>TYPE</th>"
@@ -100,9 +104,9 @@ export_report() {
         echo "<tbody>"
         echo "<tr>"
         echo "<td>INPUT</td>"
-	} >> report.html
-	{
-		echo "</tr>"
+    } >> report.html
+    {
+        echo "</tr>"
         echo "<tr>"
         echo "<td>February</td>"
         echo "<td>$80</td>"
@@ -117,7 +121,8 @@ export_report() {
         echo "</table>"
         echo "</body>"
         echo "</html>"
-	} >> report.html
+    } >> report.html
+
 }
 main() {
 	PS3='Please enter your choice: '; clear
