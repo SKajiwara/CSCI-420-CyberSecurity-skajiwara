@@ -3,8 +3,7 @@
 # Dialog Menu Options
 options=("Add Security Rule" "Modify Security Rule" "Delete Security Rule"
 			"Display IP Tables" "Export IP Table to report.html" "Exit")
-add_options=("Block Every Ping (IPv4)" "Block Every Ping (IPv6)" "Block Custom Ping (IPv4)"
-				"Block Custom Ping (IPv6)")
+add_options=("Block Every Ping (IPv4)" "Block Every Ping (IPv6)")
 mod_options=("")
 del_options=("Remove Block Every Ping (IPv4)" "Remove Block Every Ping (IPv6)")
 
@@ -21,29 +20,18 @@ add_security_rule() {
 				break;;
 			"${add_options[1]}")
 				tempEval=$(eval "sudo ip6tables -L -v -n | grep -i 'DROP       icmpv6'")
-				tempScript="sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type echo-request -j DROP"
-				tempOpt=1
-				break;;
-			"${add_options[2]}")
-				echo -n "Type IP adress / range: "
-				read ipAddr
-				tempEval=$(eval "sudo iptables -L INPUT -v -n | grep -i '$ipAddr'")
-				tempScript="sudo iptables -A INPUT -s $ipAddr -p icmp --icmp-type echo-request -j DROP"
-				tempOpt=2
-				break;;
-			"${add_options[3]}")
-				break;;
+				if [[ -z "$tempEval" ]]; then
+					eval "sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type echo-request -j DROP"
+					printf "you successfully added ${opt}\n\n"
+				else
+					printf "you alreay have ${opt}\n\n"
+				fi;break;;
 			*) printf "invalid option $REPLY\n";;
 		esac
 	done
-	echo "$tempEval AAAAA"
 	if [[ -z "$tempEval" ]];then
-    	result=$(eval "$tempScript | 'not found'")
-		if [[ -z result ]]; then
-       		printf "you successfully added ${add_options[$tempOpt]}\n"
-		else
-			printf "adding ${add_options[$tempOpt] has failed...\n"
-		fi
+    	eval "$tempScript"
+       	printf "you successfully added ${add_options[$tempOpt]}\n"
     else
         printf "you already have ${add_options[$tempOpt]}\n"
     fi
@@ -102,23 +90,14 @@ export_report() {
         echo "<td>INPUT</td>"
 	} >> report.html
 	{
-		echo "</tr>"
-        echo "<tr>"
-        echo "<td>February</td>"
-        echo "<td>$80</td>"
-        echo "</tr>"
-        echo "</tbody>"
-        echo "<tfoot>"
-        echo "<tr>"
-        echo "<td>Sum</td>"
-        echo "<td>$180</td>"
-        echo "</tr>"
-        echo "</tfoot>"
-        echo "</table>"
-        echo "</body>"
-        echo "</html>"
-	} >> report.html
-}
+	    for ((i = 0 ; i < 10 ; i++)); do
+	        echo "<td>$(eval "sudo iptables -L INPUT -v -n --line-numbers | grep $i")</td>" 
+    	dfor ((i = 0 ; i < 10 ; i++)); doone echo "</tr>" echo "<tr>" echo 
+    	"<td>February</td>" echo "<td>$80</td>" echo "</tr>" echo "</tbody>" echo "<tfoot>" 
+    	echo "<tr>" echo "<td>Sum</td>" echo "<td>$180</td>" echo "</tr>" echo "</tfoot>" 
+    	echo "</table>" echo "</body>" echo "</html>"
+            echo "<td>$(eval "sudo iptables -L INPUT -v -n --line-numbers | grep $i")</td>"
+        done}
 main() {
 	PS3='Please enter your choice: '; clear
     while true; do
