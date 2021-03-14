@@ -1,0 +1,102 @@
+1615234222095	geckodriver	INFO	Listening on 127.0.0.1:39941
+1615234222102	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile8SQP8p"
+Sandbox: unsupported fd-relative fstatat(27, "", 0x7FFD2C87AE00, 4096)
+Sandbox: seccomp sandbox violation: pid 3678, tid 3678, syscall 262, args 27 140221942289150 140725350542848 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(26, "", 0x7FFFC4530310, 4096)
+Sandbox: seccomp sandbox violation: pid 3718, tid 3718, syscall 262, args 26 140066869052158 140736487162640 4096 4096 1.
+1615234225626	Marionette	INFO	Listening on port 45139
+1615234225730	Marionette	WARN	TLS certificate errors will be ignored for this session
+1615234247820	Marionette	INFO	Stopped listening on port 45139
+1615234265173	geckodriver	INFO	Listening on 127.0.0.1:32841
+1615234265179	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile9nRsVB"
+Sandbox: unsupported fd-relative fstatat(25, "", 0x7FFCD298D510, 4096)
+Sandbox: seccomp sandbox violation: pid 4088, tid 4088, syscall 262, args 25 140189545599742 140723841717520 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(27, "", 0x7FFE341D9830, 4096)
+Sandbox: seccomp sandbox violation: pid 4104, tid 4104, syscall 262, args 27 139962486227710 140729772775472 4096 4096 1.
+1615234268318	Marionette	INFO	Listening on port 37995
+1615234268391	Marionette	WARN	TLS certificate errors will be ignored for this session
+1615234293534	Marionette	INFO	Stopped listening on port 37995
+1615234721833	geckodriver	INFO	Listening on 127.0.0.1:36279
+1615234721838	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilemkG70s"
+Sandbox: unsupported fd-relative fstatat(27, "", 0x7FFE6BAAB4A0, 4096)
+Sandbox: seccomp sandbox violation: pid 4683, tid 4683, syscall 262, args 27 140045519901438 140730704770208 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(25, "", 0x7FFE48365820, 4096)
+Sandbox: seccomp sandbox violation: pid 4696, tid 4696, syscall 262, args 25 140550015619838 140730109941792 4096 4096 1.
+1615234724940	Marionette	INFO	Listening on port 33453
+1615234724959	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: "Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers."
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:226:34
+emit@resource://devtools/shared/event-emitter.js:172:18
+emit@resource://devtools/shared/event-emitter.js:324:18
+getMutations@resource://devtools/client/fronts/walker.js:409:10
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1615234783372	Marionette	INFO	Stopped listening on port 33453
+1615234887419	geckodriver	INFO	Listening on 127.0.0.1:33225
+1615234887426	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileipadB2"
+Sandbox: unsupported fd-relative fstatat(28, "", 0x7FFC4E66B790, 4096)
+Sandbox: seccomp sandbox violation: pid 5110, tid 5110, syscall 262, args 28 140675570492158 140721623840656 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(24, "", 0x7FFDF6A42F20, 4096)
+Sandbox: seccomp sandbox violation: pid 5126, tid 5126, syscall 262, args 24 140497474507518 140728741408544 4096 4096 1.
+1615234889992	Marionette	INFO	Listening on port 36009
+1615234890038	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: "Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers."
+1615235006298	geckodriver	INFO	Listening on 127.0.0.1:53913
+1615235006303	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5KlcDw"
+Sandbox: unsupported fd-relative fstatat(25, "", 0x7FFC945BE5B0, 4096)
+Sandbox: seccomp sandbox violation: pid 5592, tid 5592, syscall 262, args 25 139755369677566 140722797536688 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(24, "", 0x7FFD23A7C4F0, 4096)
+Sandbox: seccomp sandbox violation: pid 5587, tid 5587, syscall 262, args 24 139626204545790 140725201650928 4096 4096 1.
+1615235009881	Marionette	INFO	Listening on port 38233
+1615235009928	Marionette	WARN	TLS certificate errors will be ignored for this session
+1615235062121	geckodriver	INFO	Listening on 127.0.0.1:33399
+1615235062127	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileQJFkcZ"
+Sandbox: unsupported fd-relative fstatat(28, "", 0x7FFE3EF6C1F0, 4096)
+Sandbox: seccomp sandbox violation: pid 5860, tid 5860, syscall 262, args 28 139988238930686 140729954779632 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(27, "", 0x7FFD8927EF40, 4096)
+Sandbox: seccomp sandbox violation: pid 5909, tid 5909, syscall 262, args 27 140057111053054 140726904549184 4096 4096 1.
+1615235065412	Marionette	INFO	Listening on port 36371
+1615235065443	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: "Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers."
+1615235417300	Marionette	INFO	Stopped listening on port 36009
+1615235432518	Marionette	INFO	Stopped listening on port 36371
+1615235461108	geckodriver	INFO	Listening on 127.0.0.1:36201
+1615235462120	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileHpvTZh"
+Sandbox: unsupported fd-relative fstatat(27, "", 0x7FFC425869A0, 4096)
+Sandbox: seccomp sandbox violation: pid 6445, tid 6445, syscall 262, args 27 140111077511934 140721421576608 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(24, "", 0x7FFDFF803440, 4096)
+Sandbox: seccomp sandbox violation: pid 6461, tid 6461, syscall 262, args 24 140005292856062 140728890045504 4096 4096 1.
+1615235465144	Marionette	INFO	Listening on port 42283
+1615235465234	Marionette	WARN	TLS certificate errors will be ignored for this session
+1615236324939	geckodriver	INFO	Listening on 127.0.0.1:55815
+1615236324944	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilePqowrV"
+Sandbox: unsupported fd-relative fstatat(24, "", 0x7FFF816B4C20, 4096)
+Sandbox: seccomp sandbox violation: pid 6803, tid 6803, syscall 262, args 24 140689289466622 140735364680736 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(26, "", 0x7FFF964E8430, 4096)
+Sandbox: seccomp sandbox violation: pid 6906, tid 6906, syscall 262, args 26 140138596565758 140735715116080 4096 4096 1.
+1615236327536	Marionette	INFO	Listening on port 38491
+1615236327565	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sandbox: unsupported fd-relative fstatat(29, "", 0x7FFDAC6589E0, 4096)
+Sandbox: seccomp sandbox violation: pid 6975, tid 6975, syscall 262, args 29 139669900407550 140727495789024 4096 4096 1.
+1615236403697	geckodriver	INFO	Listening on 127.0.0.1:48333
+1615236403702	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilecwbuRO"
+Sandbox: unsupported fd-relative fstatat(28, "", 0x7FFD27159400, 4096)
+Sandbox: seccomp sandbox violation: pid 7287, tid 7287, syscall 262, args 28 139637967913726 140725259179008 4096 4096 1.
+Sandbox: unsupported fd-relative fstatat(26, "", 0x7FFFA0469290, 4096)
+Sandbox: seccomp sandbox violation: pid 7303, tid 7303, syscall 262, args 26 140009333895934 140735882367632 4096 4096 1.
+1615236406498	Marionette	INFO	Listening on port 46601
+1615236406518	Marionette	WARN	TLS certificate errors will be ignored for this session
+1615750949021	Marionette	INFO	Stopped listening on port 46601
+1615750950368	Marionette	INFO	Stopped listening on port 38491
+1615750955234	Marionette	INFO	Stopped listening on port 42283
+1615750975320	Marionette	INFO	Stopped listening on port 38233
